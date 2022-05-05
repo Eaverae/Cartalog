@@ -1,9 +1,15 @@
-version: '3.7'
+version: '3.8'
 
 volumes:
   db-data:
 
 services:
+  cartalog.api:
+    image: ${DOCKER_REGISTRY-}cartalogapi
+    build:
+      context: .
+      dockerfile: Cartalog.Api/Dockerfile
+      
   postgresql:
     image: postgres:latest
     ports:

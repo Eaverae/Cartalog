@@ -16,8 +16,9 @@ namespace Cartalog.Api
                 .Build();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, CartalogDbContext dbContext)
         {
+            // dbContext.Database.Migrate();
         }
 
         public void ConfigureServices(IServiceCollection services)

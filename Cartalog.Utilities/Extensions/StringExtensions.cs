@@ -1,7 +1,15 @@
 ﻿namespace Cartalog.Utilities.Extensions
 {
+    /// <summary>
+    /// Class StringExtensions.
+    /// </summary>
     public static class StringExtensions
     {
+        /// <summary>
+        /// Determines whether [is null or white space] [the specified instance].
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <returns><c>true</c> if [is null or white space] [the specified instance]; otherwise, <c>false</c>.</returns>
         public static bool IsNullOrWhiteSpace(this string instance)
         {
             return string.IsNullOrWhiteSpace(instance);
