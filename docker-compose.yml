@@ -1,0 +1,19 @@
+version: '3.7'
+
+volumes:
+  db-data:
+
+services:
+  postgresql:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: cartalog
+      PGHOST: localhost
+      PGPORT: 5432
+      PGUSER: cartalog
+      PGPASSWORD: cartalog
+      PGCONNECT_TIMEOUT: 15
