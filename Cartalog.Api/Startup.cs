@@ -18,12 +18,15 @@ namespace Cartalog.Api
 
         public void Configure(IApplicationBuilder app, CartalogDbContext dbContext)
         {
-            // dbContext.Database.Migrate();
+            dbContext.Database.Migrate();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = configuration["ConnectionStrings:CartalogDatabase"];
+            string connectionString = configuration["CartalogDatabase"];
+            var test = configuration["DBHOST"];
+
+            connectionString = connectionString.Replace("DBHOST", test);
 
             if (connectionString.IsNullOrWhiteSpace())
                 throw new InvalidOperationException("No connectionstring could be found");

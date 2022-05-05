@@ -1,15 +1,9 @@
-version: '3.8'
+version: '3.7'
 
 volumes:
   db-data:
 
 services:
-  cartalog.api:
-    image: ${DOCKER_REGISTRY-}cartalogapi
-    build:
-      context: .
-      dockerfile: Cartalog.Api/Dockerfile
-      
   postgresql:
     image: postgres:latest
     ports:
@@ -17,9 +11,20 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
+      POSTGRES_USER: cartalog
       POSTGRES_PASSWORD: cartalog
       PGHOST: localhost
       PGPORT: 5432
       PGUSER: cartalog
       PGPASSWORD: cartalog
       PGCONNECT_TIMEOUT: 15
+
+  cartalog.api:
+    image: ${DOCKER_REGISTRY-}cartalogapi
+    build:
+      context: .
+      dockerfile: Cartalog.Api/Dockerfile
+    depends_on:
+      - postgresql
+    environment:
+      DBHOST: postgresql
